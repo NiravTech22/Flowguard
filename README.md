@@ -6,7 +6,7 @@
 ![Version](https://img.shields.io/badge/version-0.1.0-blue)
 ![License](https://img.shields.io/badge/license-Proprietary-red)
 
-## 🏗️ System Architecture
+## Basic Architecture of Flowguard
 
 Flowguard operates on a layered architecture ensuring separation of concerns between client interfaces, control logic, execution, and data.
 
@@ -17,33 +17,11 @@ Flowguard operates on a layered architecture ensuring separation of concerns bet
 
 *(See `docs/system_architecture.md` for the full diagram)*
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Backend**: Python 3.11+, FastAPI, Pydantic, SQLAlchemy, AsyncIO.
 - **Frontend**: TypeScript, Next.js 14 (App Router), TailwindCSS, Shadcn/UI.
 - **Infrastructure**: Docker, PostgreSQL, Redis (planned).
-
-## 📂 Project Structure
-
-```bash
-Flowguard/
-├── backend/            # FastAPI Application
-│   ├── src/
-│   │   ├── api/        # REST Endpoints
-│   │   ├── core/       # Config, Security, Logging
-│   │   ├── workflow/   # Orchestrator & Engine
-│   │   └── main.py     # Entrypoint
-│   └── tests/          # Pytest Suite
-├── frontend/           # Next.js Dashboard
-│   ├── src/
-│   │   ├── app/        # App Router Pages
-│   │   └── components/ # React Components
-│   └── package.json
-├── docs/               # Architecture & Design Docs
-└── docker-compose.yml  # Local Development Orchestration
-```
-
-## 🛠️ Getting Started
 
 ### Prerequisites
 
