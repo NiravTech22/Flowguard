@@ -37,8 +37,7 @@ jobs:
 
       - name: Type check with MyPy
         run: |
-          # Exclude test files to avoid type errors in dynamic tests
-          mypy . --exclude test
+          mypy .
 
       - name: Run tests
         run: |
