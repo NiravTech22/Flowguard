@@ -4,9 +4,9 @@
 
 Invariant is a research-driven framework that applies principles from robotics control theory to the **design, execution, and validation of robotics software workflows**. Rather than learning robot actions or replacing planners and controllers, this system focuses on *governing* how robotics pipelines behave under uncertainty, timing constraints, and variation.
 
-The core idea is simple but underexplored:
+The core idea is simple but underexplored: 
 
-> Robotics systems fail more often due to integration, timing, and validation issues than due to insufficient intelligence. This framework uses machine learning as a *supervisory control layer* to reason about workflow stability, correctness, and reliability.
+Robotics systems fail more often due to integration, timing, and validation issues than due to insufficient intelligence. This framework uses machine learning as a *supervisory control layer* to reason about workflow stability, correctness, and reliability.
 
 The project is designed to run entirely on a single development machine, without requiring physical robots or simulators, while remaining compatible with real robotics stacks such as ROS 2.
 
