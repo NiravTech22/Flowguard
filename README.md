@@ -1,8 +1,8 @@
-# Control-Theoretic ML for Robotics Workflows
+# Invariant
 
 ## Overview
 
-Control-Theoretic ML for Robotics Workflows is a research-driven framework that applies principles from robotics control theory to the **design, execution, and validation of robotics software workflows**. Rather than learning robot actions or replacing planners and controllers, this system focuses on *governing* how robotics pipelines behave under uncertainty, timing constraints, and variation.
+Invariant is a research-driven framework that applies principles from robotics control theory to the **design, execution, and validation of robotics software workflows**. Rather than learning robot actions or replacing planners and controllers, this system focuses on *governing* how robotics pipelines behave under uncertainty, timing constraints, and variation.
 
 The core idea is simple but underexplored:
 
@@ -12,7 +12,7 @@ The project is designed to run entirely on a single development machine, without
 
 ---
 
-## What This Project Is — and Is Not
+## What This Project Is, and Is Not
 
 ### This project **is**:
 
@@ -30,13 +30,13 @@ The project is designed to run entirely on a single development machine, without
 * A perception or planning model
 * A low-code abstraction that hides system details
 
-Machine learning is used here as a **meta-level system intelligence**, not as a replacement for robotics logic.
+Machine learning is used here as a meta-level system intelligence, not as a replacement for robotics level logic.
 
 ---
 
-## Motivation
+## The motivation for this project
 
-Modern Robotics development is dominated by:
+As a robotics engineering student, I find that modern robotics is often dominated by complex, multi-node software graphs 
 
 * Complex, multi-node software graphs
 * Tight latency and jitter constraints
@@ -160,44 +160,12 @@ No modifications to existing ROS 2 nodes are required.
 
 ---
 
-## Development Philosophy
-
-* Transparency over abstraction
-* Determinism over convenience
-* Validation as a first-class concern
-* ML decisions must be inspectable and auditable
-
-The framework assumes users are engineers who want leverage, not automation theater.
-
----
-
-## Intended Audience
-
-This project is intended for:
-
-* Robotics engineers
-* Autonomous systems developers
-* Research teams working on complex robotics stacks
-* Engineers who understand and value system constraints
-
-It is explicitly **not** designed as a beginner-friendly robotics toolkit.
-
----
-
-## About
-
-Control-Theoretic ML for Robotics Workflows explores a missing layer in modern robotics: the governance of complex software systems using machine learning informed by control theory. By treating workflows themselves as dynamic systems, the project aims to make robotics development more predictable, reproducible, and trustworthy.
-
-Rather than focusing on what a robot should do, this work focuses on whether the system responsible for deciding *can be trusted to behave consistently*. The long-term goal is to reduce integration risk and validation overhead while preserving full visibility and control for engineers.
-
----
-
 ## Status
 
-This project is under active research and development. The current focus is on:
+This project is under active R&D. The current focus is on:
 
 * Abstract workflow modeling
 * Parallel validation infrastructure
-* ML-based stability and failure prediction
+* Machine learning based stability and failure prediction
 
-Hardware integration is intentionally deferred.
+Hardware integration has been intentionally deferred.
