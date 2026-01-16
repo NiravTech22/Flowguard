@@ -19,7 +19,7 @@ class FailurePredictionMLP(nn.Module):
         return self.net(x)
 
 class MLPSupervisor:
-    """Supervisory ML model for failure prediction."""
+    """model for failure prediction"""
     
     def __init__(self, input_dim: int):
         self.model = FailurePredictionMLP(input_dim)
@@ -41,9 +41,8 @@ class MLPSupervisor:
         self.optimizer.step()
         return loss.item()
 
-# Stub for GNN
+# stub for gnn
 class GNNSupervisor:
-    """Placeholder for future Graph Neural Network implementation."""
     def __init__(self):
         pass
     def predict(self, graph_data: Any) -> float:

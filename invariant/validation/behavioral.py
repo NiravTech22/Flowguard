@@ -5,7 +5,7 @@ from ..execution.signals import WorkflowExecutionTrace
 from typing import List, Dict
 
 class BehavioralValidator(BaseValidator):
-    """Analyzes divergence across multiple execution runs."""
+    # this class was defined to analyze the divergence across multiple execution runs.
     
     def validate(self, graph: WorkflowGraph, traces: List[WorkflowExecutionTrace]) -> ValidationResult:
         if len(traces) < 2:
@@ -19,14 +19,14 @@ class BehavioralValidator(BaseValidator):
                     node_latencies[signal.node_id] = []
                 node_latencies[signal.node_id].append(signal.duration_ms)
                 
-        # Calculate variance and entropy (simplified) per node
+        # calculate the variance and entropy (simplified) per node
         stats = {}
         high_variance_nodes = []
         
         for node_id, latencies in node_latencies.items():
             variance = float(np.var(latencies))
             mean = float(np.mean(latencies))
-            cv = variance / (mean**2) if mean > 0 else 0 # Coefficient of variation squared
+            cv = variance / (mean**2) if mean > 0 else 0 # coefficient of variation squared
             
             stats[node_id] = {
                 "mean": mean,
@@ -34,7 +34,7 @@ class BehavioralValidator(BaseValidator):
                 "cv": cv
             }
             
-            # Arbitrary threshold for v1 "instability"
+            # arbitrary threshold for v1 "instability"
             if cv > 0.5:
                 high_variance_nodes.append(node_id)
                 

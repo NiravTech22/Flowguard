@@ -1,15 +1,14 @@
 from typing import List, Dict, Any
 
 class PassiveBridge:
-    """Read-only ROS 2 graph introspection bridge."""
+    #ROS 2 introspection bridge.
     
     def __init__(self):
-        # In a real ROS 2 environment, this would use rclpy
+        # rclpy in an actual ROS2 workflow
         self.active = False
 
     def introspect_graph(self) -> Dict[str, Any]:
-        """Returns a snapshot of the current ROS 2 graph."""
-        # For v1, return a mock or empty graph if no ROS 2 is present
+        # ROS 2 graph snapshot
         return {
             "nodes": [],
             "topics": [],
@@ -17,12 +16,11 @@ class PassiveBridge:
         }
 
 class Mirror:
-    """Passive mirroring of ROS 2 execution signals."""
+    # passive mirroring of ROS 2 execution signals.
     
     def __init__(self, bridge: PassiveBridge):
         self.bridge = bridge
 
     def capture_signals(self, duration_s: float) -> List[Dict[str, Any]]:
-        """Passively observes topics to capture timing signals."""
-        # Stub for bag replay or live observation
+        # tub for bag replay or live observation
         return []

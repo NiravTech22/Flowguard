@@ -18,7 +18,7 @@ def run_demo():
     supervisor.register_validator(PhysicalConstraintValidator(max_linear_velocity=2.0))
     supervisor.register_validator(GeofenceValidator(x_limit=10.0))
     
-    # 2. Simulate Scenarios
+    # simulate scenarios
     scenarios = [
         {
             "name": "Normal Operation",
