@@ -1,4 +1,4 @@
-# Invariant: Control-Theoretic ML for Robotics Workflows
+# Invariant: Control-Theoretic Meta Learning for Robotics Workflows
 
 [![Python Version](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
