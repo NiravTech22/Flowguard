@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "invariant-backend"
+version = "0.1.0"
+description = "Invariant robotics workflow governance backend"
+requires-python = ">=3.10"
+
+dependencies = [
+    "fastapi",
+    "pydantic",
+    "pydantic-settings",
+]
+
+[tool.setuptools]
+packages = ["backend"]
