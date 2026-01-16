@@ -1,0 +1,41 @@
+nodes:
+  - id: camera
+    type: perception
+    ports:
+      - name: out
+        port_type: output
+        data_type: image
+    constraints:
+      max_latency_ms: 33.0
+  - id: planner
+    type: planning
+    ports:
+      - name: in
+        port_type: input
+        data_type: image
+      - name: out
+        port_type: output
+        data_type: path
+    constraints:
+      max_latency_ms: 100.0
+  - id: controller
+    type: control
+    ports:
+      - name: in
+        port_type: input
+        data_type: path
+      - name: out
+        port_type: output
+        data_type: twist
+    constraints:
+      max_latency_ms: 10.0
+
+edges:
+  - source: camera
+    target: planner
+    source_port: out
+    target_port: in
+  - source: planner
+    target: controller
+    source_port: out
+    target_port: in

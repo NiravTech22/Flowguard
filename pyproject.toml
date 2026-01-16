@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "invariant"
+version = "0.1.0"
+description = "Control-Theoretic ML for Robotics Workflows"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+dependencies = [
+    "networkx>=3.0",
+    "pyyaml>=6.0",
+    "numpy>=1.20.0",
+    "torch>=2.0.0",
+    "pydantic>=2.0.0",
+    "click>=8.0.0",
+    "matplotlib>=3.5.0",
+]
+
+[project.scripts]
+invariant = "invariant.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["invariant*"]

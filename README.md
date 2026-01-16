@@ -1,171 +1,80 @@
-# Invariant
+# Invariant: Control-Theoretic ML for Robotics Workflows
 
 ## Overview
 
-Invariant is a research-driven framework that applies principles from robotics control theory to the **design, execution, and validation of robotics software workflows**. Rather than learning robot actions or replacing planners and controllers, this system focuses on *governing* how robotics pipelines behave under uncertainty, timing constraints, and variation.
+**Invariant** is a research-grade robotics software framework that applies control-theoretic principles to the governance and validation of robotics pipelines. Unlike traditional robot controllers or simulators, Invariant acts as a supervisory layer that treats the software workflow itself as a dynamic system.
 
-The core idea is simple but underexplored: 
-
-Robotics systems fail more often due to integration, timing, and validation issues than due to insufficient intelligence. This framework uses machine learning as a *supervisory control layer* to reason about workflow stability, correctness, and reliability.
-
-The project is designed to run entirely on a single development machine, without requiring physical robots or simulators, while remaining compatible with real robotics stacks such as ROS 2.
+It is designed to be deterministic, reproducible, and explainable, providing robotics engineers with a powerful tool to analyze timing drift, integration errors, and system stability under perturbation.
 
 ---
 
-## What This Project Is, and Is Not
+## Philosophy & Core Principles
 
-### This project **is**:
+Robotics systems often fail at the integration layer. Invariant addresses this by implementing a closed-loop validation structure:
 
-* A validation and governance layer for robotics workflows
-* Inspired by control theory, not end-to-end policy learning
-* Focused on reproducibility, determinism, and failure analysis
-* Compatible with ROS 2 graphs, bags, and execution models
-* Designed for robotics engineers, not abstract ML benchmarks
+1.  **Workflow Definition**: Declarative graph representation of the robotics pipeline.
+2.  **Execution Engine**: Strictly deterministic execution with seeded fault injection.
+3.  **Validation Layer**: Composable passes for structural, temporal, and behavioral analysis.
+4.  **ML Supervisor**: Supervisory observer that predicts instability and failure risk.
 
-### This project **is not**:
-
-* A robot motion controller
-* A reinforcement learning policy
-* A simulator or physics engine
-* A perception or planning model
-* A low-code abstraction that hides system details
-
-Machine learning is used here as a meta-level system intelligence, not as a replacement for robotics level logic.
+### Non-Goals (Must Not Implement)
+- **No Physical Control**: Does not control motors or hardware.
+- **No Planning**: Does not compute trajectories or paths.
+- **No Perception**: Does not implement CV or sensor fusion models.
+- **No Simulation**: Does not simulate physics (uses logical timing instead).
 
 ---
 
-## The motivation for this project
-
-As a robotics engineering student, I find that modern robotics is often dominated by complex, multi-node software graphs 
-
-* Complex, multi-node software graphs
-* Tight latency and jitter constraints
-* Partial observability and noisy data
-* Fragile assumptions embedded in glue code
-
-Validation is typically:
-
-* Ad hoc
-* Sequential
-* Manual
-* Difficult to reproduce
-
-This project treats a robotics workflow itself as a *dynamic* system that can be analyzed, perturbed, replayed, and stabilized using control-theoretic ideas.
-
----
-
-## Invariant's System Level Architecture
-
-### High-Level Architecture
+## Architecture
 
 ```mermaid
 graph TD
     A[Workflow Definition] --> B[Execution Engine]
-    B --> C[Parallel Validation Layer]
-    C --> D[Metrics & Signals]
-    D --> E[ML Supervisory Model]
-    E --> F[Control Decisions]
+    B --> C[Validation Layer]
+    C --> D[Signals & Metrics]
+    D --> E[ML Supervisor]
+    E --> F[Stability Assessment]
     F --> B
 ```
 
-The system forms a closed feedback loop, analogous to classical control systems.
-
 ---
 
-## Workflow Representation
+## Getting Started
 
-Workflows are represented as structured graphs:
+### Installation
 
-* Nodes represent components (e.g., perception, planning, control)
-* Edges represent data or control flow
-* Each node emits timing and validation signals
-
-```mermaid
-graph LR
-    P[Perception Node] --> L[Localization Node]
-    L --> PL[Planning Node]
-    PL --> C[Control Node]
+```bash
+pip install -e .
 ```
 
-This representation enables both graph-based learning and formal validation.
+### Usage
 
----
+Run the validation pipeline on a workflow:
 
-## Machine Learning Model
-
-### Model Role
-
-The ML model learns relationships between:
-
-* Workflow structure
-* Temporal behavior
-* Validation outcomes
-
-and predicts:
-
-* Probability of failure
-* Sensitivity to perturbations
-* Likely failure classes
-* Confidence and stability scores
-
-### Model Characteristics
-
-* Graph-aware (e.g., GNN-style message passing)
-* Temporal reasoning over execution windows
-* Trained on synthetic and replayed workflows
-* No action or control outputs by design
-
-This ensures the model remains a *governor*, not an actor.
-
----
-
-## Validation Modes
-
-### Structural Validation
-
-* Graph topology consistency
-* Topic and interface compatibility
-* Contract enforcement
-
-### Temporal Validation
-
-* Latency budgets
-* End-to-end timing
-* Jitter and variance detection
-
-### Behavioral Validation
-
-* Divergence across replayed runs
-* Sensitivity to noise and delays
-* Stability under controlled perturbations
-
----
-
-## ROS 2 Integration
-
-The framework integrates with ROS 2 non-invasively:
-
-* Introspects node graphs
-* Subscribes to live or bagged data
-* Mirrors execution without interfering
-
-```mermaid
-graph TD
-    R[ROS 2 Graph] --> I[Introspection Layer]
-    I --> V[Validation & Replay]
-    V --> M[ML Supervisor]
+```bash
+invariant validate examples/simple_workflow.yaml --runs 10 --latency-max 50.0
 ```
 
-No modifications to existing ROS 2 nodes are required.
+This will:
+1. Load the workflow DAG.
+2. Execute it 10 times with deterministic seeded perturbations.
+3. Perform structural, temporal (latency budget), and behavioral (divergence) validation.
+4. Compute a stability score.
+5. Generate a `stability_report.md`.
 
 ---
 
-## Status
+## Project Structure
 
-This project is under active R&D. The current focus is on:
+- `invariant/workflow/`: Declarative node and graph abstractions.
+- `invariant/execution/`: Deterministic engine and perturbation logic.
+- `invariant/validation/`: Stability and divergence validators.
+- `invariant/ml/`: Predictive supervisor and feature extraction.
+- `invariant/ros/`: Passive ROS 2 introspection bridge.
+- `invariant/reporting/`: Human and machine-readable reports.
 
-* Abstract workflow modeling
-* Parallel validation infrastructure
-* Machine learning based stability and failure prediction
+---
 
-Hardware integration has been intentionally deferred.
+## License
+
+MIT License. See `LICENSE` for details.
