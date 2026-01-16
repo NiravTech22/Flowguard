@@ -1,5 +1,9 @@
 # Invariant: Control-Theoretic ML for Robotics Workflows
 
+[![Python Version](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![CUDA](https://img.shields.io/badge/CUDA-12.1-orange)](https://developer.nvidia.com/cuda-zone)
+
 ## Overview
 
 **Invariant** is a research-grade robotics software framework that applies control-theoretic principles to the governance and validation of robotics pipelines. Unlike traditional robot controllers or simulators, Invariant acts as a supervisory layer that treats the software workflow itself as a dynamic system.
